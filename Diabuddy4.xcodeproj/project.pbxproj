@@ -14,6 +14,7 @@
 		3E57146A2C4B1BE700AD3336 /* Diabuddy4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5714692C4B1BE700AD3336 /* Diabuddy4Tests.swift */; };
 		3E5714742C4B1BE700AD3336 /* Diabuddy4UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5714732C4B1BE700AD3336 /* Diabuddy4UITests.swift */; };
 		3E5714762C4B1BE700AD3336 /* Diabuddy4UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5714752C4B1BE700AD3336 /* Diabuddy4UITestsLaunchTests.swift */; };
+		3E5714832C4B1D7100AD3336 /* ColorExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5714822C4B1D7100AD3336 /* ColorExtentions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		3E57146F2C4B1BE700AD3336 /* Diabuddy4UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Diabuddy4UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E5714732C4B1BE700AD3336 /* Diabuddy4UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diabuddy4UITests.swift; sourceTree = "<group>"; };
 		3E5714752C4B1BE700AD3336 /* Diabuddy4UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diabuddy4UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3E5714822C4B1D7100AD3336 /* ColorExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtentions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				3E57145A2C4B1BE500AD3336 /* ContentView.swift */,
 				3E57145C2C4B1BE600AD3336 /* Assets.xcassets */,
 				3E57145E2C4B1BE600AD3336 /* Preview Content */,
+				3E5714822C4B1D7100AD3336 /* ColorExtentions.swift */,
 			);
 			path = Diabuddy4;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E57145B2C4B1BE500AD3336 /* ContentView.swift in Sources */,
+				3E5714832C4B1D7100AD3336 /* ColorExtentions.swift in Sources */,
 				3E5714592C4B1BE400AD3336 /* Diabuddy4App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

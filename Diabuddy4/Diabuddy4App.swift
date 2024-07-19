@@ -1,14 +1,14 @@
 //
-//  Diabuddy4App.swift
-//  Diabuddy4
+//  diabuddyApp.swift
+//  diabuddy
 //
-//  Created by Srikanth Sivva on 7/19/24.
+//  Created by Roberto on 7/18/24.
 //
 
 import SwiftUI
 
 @main
-struct Diabuddy4App: App {
+struct diabuddy4App: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
