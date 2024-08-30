@@ -70,7 +70,7 @@ struct HomeView: View {
                 .padding(.bottom, 20)
                 
                 NavigationLink(destination: RegisterView()) {
-                    Text("Register")
+                    Text("Registerrrr")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
