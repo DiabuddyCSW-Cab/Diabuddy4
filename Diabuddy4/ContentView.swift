@@ -1,10 +1,7 @@
+// NEED TO IMPORT SQL TO ADD CREDENTIALS INTO DB
 
-//
-//  ContentView.swift
-//  diabuddy
-//
-//  Created by Roberto on 7/18/24.
-//
+//5:21 in hamburger menu vid
+
 import UIKit
 import SwiftUI
 
@@ -25,13 +22,7 @@ extension Color {
     }
 }
 
-struct ContentView: View {
-    @State private var username = ""
-    @State private var password = ""
-    @State private var wrongUsername = ""
-    @State private var wrongPassword = ""
-    @State private var isLoggedIn = false
-
+struct GradientBackground: ViewModifier {
     let gradient = LinearGradient(
         gradient: Gradient(colors: [
             Color(hexColor: "#A7DFFF"),
@@ -41,103 +32,279 @@ struct ContentView: View {
         endPoint: .bottomTrailing
     )
     
-    private func authenticateUser() {
-        // Dummy authentication logic
-        if username == "Vishnu" && password == "123" {
-            isLoggedIn = true
-        } else {
-            if username != "Vishnu" {
-                wrongUsername = "Invalid username"
+    func body(content: Content) -> some View {
+        ZStack {
+            gradient
+                .ignoresSafeArea()
+            content
+        }
+    }
+}
+
+
+extension View {
+    func gradientBackground() -> some View {
+        self.modifier(GradientBackground())
+    }
+}
+
+struct HomeView: View {
+    var body: some View {
+        NavigationView {
+            VStack {
+                
+                Image("db")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 250, height: 191)
+                    .padding()
+                                
+                NavigationLink(destination: LoginView()) {
+                    Text("Login")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(8)
+                }
+                .padding(.bottom, 20)
+                
+                NavigationLink(destination: RegisterView()) {
+                    Text("Register")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.green)
+                        .cornerRadius(8)
+                }
+                
+                Spacer(minLength: 50)
             }
-            if password != "123" {
-                wrongPassword = "Invalid password"
+            .padding()
+            .gradientBackground() // Apply the gradient background
+            .navigationBarHidden(true)
+        }
+    }
+}
+
+struct RegisterView: View {
+    @State private var username = ""
+    @State private var password = ""
+    @State private var wrongUsername = ""
+    @State private var wrongPassword = ""
+    @State private var isLoggedIn = false
+
+    var body: some View {
+        ZStack {
+            VStack {
+                Image("db")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 250, height: 191)
+                
+                Text("Register")
+                    .font(.largeTitle)
+                    .bold()
+                    .padding()
+                
+                HStack {
+                    Text("Have an account?")
+                    NavigationLink(destination: LoginView()) {
+                    Text("Login here.")
+                            .foregroundColor(.purple)
+                            .bold()
+                    }
+                }
+                
+                TextField("Username", text: $username)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                    .keyboardType(.emailAddress)
+                
+                SecureField("Password", text: $password)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                
+                if !wrongUsername.isEmpty {
+                    Text(wrongUsername)
+                        .foregroundColor(.red)
+                        .padding()
+                }
+                
+                if !wrongPassword.isEmpty {
+                    Text(wrongPassword)
+                        .foregroundColor(.red)
+                        .padding()
+                }
+                
+                Button(action: {
+                    authenticateUser()
+                }) {
+                    Text("Register")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(8)
+                }
+                
+                Spacer()
+                
+                NavigationLink(destination: LoggedInView(), isActive: $isLoggedIn) {
+                    EmptyView()
+                }
+            }
+            .padding()
+            .gradientBackground() // Apply the gradient background here
+            
+            if isLoggedIn {
+                // Show the logged-in view
+                LoggedInView()
             }
         }
     }
 
+    
+//NOT FINISHED -->
+    func authenticateUser() {
+        // Basic authentication example
+        // Replace this with your actual authentication logic
+        if username == "Test" && password == "password" {
+            isLoggedIn = true
+        } else {
+            wrongUsername = username.isEmpty ? "Vishnu" : "Incorrect username"
+            wrongPassword = password.isEmpty ? "123" : "Incorrect password"
+        }
+    }
+}
+
+struct LoginView: View {
+    @State private var username = ""
+    @State private var password = ""
+    @State private var wrongUsername = ""
+    @State private var wrongPassword = ""
+    @State private var isLoggedIn = false
+
     var body: some View {
-        NavigationView {
-            ZStack {
-                gradient.ignoresSafeArea()
+        ZStack {
+            VStack {
+                Image("db")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 250, height: 191)
                 
-                if isLoggedIn {
-                    // Show the logged-in view
-                    LoggedInView()
-                } else {
-                    VStack {
-                        Image("db")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 250, height: 191)
-                            .padding()
-                                            
-                        Text("Create an account")
-                            .font(.largeTitle)
+                Text("Login")
+                    .font(.largeTitle)
+                    .bold()
+                    .padding()
+                
+                HStack {
+                    Text("Don't have an account?")
+                    NavigationLink(destination: RegisterView()) {
+                    Text("Register here.")
+                            .foregroundColor(.purple)
                             .bold()
-                            .padding()
-                        Text("Enter your email to sign up")
-                        
-                        TextField("Username", text: $username)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding()
-                            .keyboardType(.emailAddress)
-                        
-                        SecureField("Password", text: $password)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding()
-                        
-                        if !wrongUsername.isEmpty {
-                            Text(wrongUsername)
-                                .foregroundColor(.red)
-                                .padding()
-                        }
-                        
-                        if !wrongPassword.isEmpty {
-                            Text(wrongPassword)
-                                .foregroundColor(.red)
-                                .padding()
-                        }
-                        
-                        Button(action: {
-                            authenticateUser()
-                        }) {
-                            Text("Sign up")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                                .padding()
-                                .background(Color.blue)
-                                .cornerRadius(8)
-                        }
-                        
-                        Spacer()
                     }
                 }
+                
+                TextField("Username", text: $username)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                    .keyboardType(.emailAddress)
+                
+                SecureField("Password", text: $password)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                
+                if !wrongUsername.isEmpty {
+                    Text(wrongUsername)
+                        .foregroundColor(.red)
+                        .padding()
+                }
+                
+                if !wrongPassword.isEmpty {
+                    Text(wrongPassword)
+                        .foregroundColor(.red)
+                        .padding()
+                }
+                
+                Button(action: {
+                    authenticateUser()
+                }) {
+                    Text("Login")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(8)
+                }
+                
+                Spacer()
+                
+                NavigationLink(destination: LoggedInView(), isActive: $isLoggedIn) {
+                                EmptyView()
+                            }
+            }
+            .padding()
+            .gradientBackground() // Apply the gradient background here
+            
+            if isLoggedIn {
+                // Show the logged-in view
+                LoggedInView()
             }
         }
-        .navigationBarHidden(true)
+    }
+
+    func authenticateUser() {
+        // Basic authentication example
+        // Replace this with your actual authentication logic
+        if username == "Test" && password == "password" {
+            isLoggedIn = true
+        } else {
+            wrongUsername = username.isEmpty ? "Vishnu" : "Incorrect username"
+            wrongPassword = password.isEmpty ? "123" : "Incorrect password"
+        }
     }
 }
 
 struct LoggedInView: View {
+    
+    @State var showMenu = true
+    
     var body: some View {
-        VStack {
-            Spacer() // Pushes the content to the center
-            
-            Text("You are logged in!")
-                .font(.largeTitle)
-                .bold()
-                .padding()
-                .multilineTextAlignment(.center) // Centers text horizontally
-            
-            Spacer() // Pushes the content to the center
+        GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                MainView()
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                if self.showMenu {
+                    MenuView()
+                        .frame(width: geometry.size.width/2)
+                }
+            }
         }
         .edgesIgnoringSafeArea(.all) // Makes the content extend beyond the safe areas
     }
 }
 
+struct MainView: View {
+    var body: some View {
+        Button(action: {
+            print("open menu")
+        }) {
+            Text("Open menu")
+        }
+    }
+}
+
+struct ContentView: View {
+    var body: some View {
+        HomeView()
+    }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+
