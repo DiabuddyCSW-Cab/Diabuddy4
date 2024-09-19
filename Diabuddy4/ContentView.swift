@@ -1,6 +1,6 @@
 // NEED TO IMPORT SQL TO ADD CREDENTIALS INTO DB
 
-//5:21 in hamburger menu vid
+//9:55 in hamburger menu vid
 
 import UIKit
 import SwiftUI
@@ -268,30 +268,57 @@ struct LoginView: View {
 }
 
 struct LoggedInView: View {
+    @State private var showMenu = false // Initialize with false
     
-    @State var showMenu = true
-    
-    var body: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .leading) {
-                MainView()
-                    .frame(width: geometry.size.width, height: geometry.size.height)
-                if self.showMenu {
-                    MenuView()
-                        .frame(width: geometry.size.width/2)
+    let drag = DragGesture()
+        .onEnded {
+            if $0.translation.width < -100 {
+                withAnimation {
+                    self.showMenu = false
                 }
             }
+        }
+    
+    var body: some View {
+        return GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                MainView(showMenu: $showMenu)
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .offset(x: showMenu ? geometry.size.width / 2 : 0)
+                    .disabled(showMenu) // Disable interaction with main content when menu is open
+                
+                if showMenu {
+                    MenuView()
+                        .frame(width: geometry.size.width / 2)
+                        .transition(.move(edge: .leading)) // Animate menu appearance
+                        .zIndex(1) // Ensure MenuView is on top
+                        .onTapGesture {
+                            withAnimation {
+                                showMenu = false // Close menu on tap
+                            }
+                        }
+                }
+            }
+            .gesture(drag)
         }
         .edgesIgnoringSafeArea(.all) // Makes the content extend beyond the safe areas
     }
 }
 
 struct MainView: View {
+    @Binding var showMenu: Bool
+    
     var body: some View {
-        Button(action: {
-            print("open menu")
-        }) {
-            Text("Open menu")
+        VStack {
+            Button(action: {
+                withAnimation { // Add animation for toggling menu
+                    showMenu.toggle()
+                }
+            }) {
+                Text("Toggle menu")
+            }
+            
+            // Other content of MainView
         }
     }
 }
