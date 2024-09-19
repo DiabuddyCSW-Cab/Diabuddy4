@@ -1,5 +1,5 @@
 // NEED TO IMPORT SQL TO ADD CREDENTIALS INTO DB
-
+//rohan likes kids
 //5:21 in hamburger menu vid
 
 import UIKit
@@ -102,7 +102,7 @@ struct RegisterView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 250, height: 191)
                 
-                Text("Register")
+                Text("Rohan's Smelly")
                     .font(.largeTitle)
                     .bold()
                     .padding()
