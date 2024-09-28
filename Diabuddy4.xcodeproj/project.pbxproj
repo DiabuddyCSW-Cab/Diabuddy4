@@ -15,7 +15,9 @@
 		3E5714742C4B1BE700AD3336 /* Diabuddy4UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5714732C4B1BE700AD3336 /* Diabuddy4UITests.swift */; };
 		3E5714762C4B1BE700AD3336 /* Diabuddy4UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5714752C4B1BE700AD3336 /* Diabuddy4UITestsLaunchTests.swift */; };
 		3E5714832C4B1D7100AD3336 /* ColorExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5714822C4B1D7100AD3336 /* ColorExtentions.swift */; };
-		F5DF277F2C82710B0037B00F /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DF277E2C82710B0037B00F /* File.swift */; };
+		F5C69B422CA88314005F6DD0 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C69B412CA88314005F6DD0 /* Modifiers.swift */; };
+		F5C69B442CA886D0005F6DD0 /* DiabetesPredictionTunedSVCModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F5C69B432CA886D0005F6DD0 /* DiabetesPredictionTunedSVCModel.mlmodel */; };
+		F5DF277F2C82710B0037B00F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DF277E2C82710B0037B00F /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +49,9 @@
 		3E5714732C4B1BE700AD3336 /* Diabuddy4UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diabuddy4UITests.swift; sourceTree = "<group>"; };
 		3E5714752C4B1BE700AD3336 /* Diabuddy4UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diabuddy4UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3E5714822C4B1D7100AD3336 /* ColorExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtentions.swift; sourceTree = "<group>"; };
-		F5DF277E2C82710B0037B00F /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		F5C69B412CA88314005F6DD0 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		F5C69B432CA886D0005F6DD0 /* DiabetesPredictionTunedSVCModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = DiabetesPredictionTunedSVCModel.mlmodel; path = ../../DiabetesPredictionTunedSVCModel.mlmodel; sourceTree = "<group>"; };
+		F5DF277E2C82710B0037B00F /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +102,11 @@
 		3E5714572C4B1BE400AD3336 /* Diabuddy4 */ = {
 			isa = PBXGroup;
 			children = (
+				F5C69B432CA886D0005F6DD0 /* DiabetesPredictionTunedSVCModel.mlmodel */,
+				F5C69B412CA88314005F6DD0 /* Modifiers.swift */,
 				3E5714582C4B1BE400AD3336 /* Diabuddy4App.swift */,
 				3E57145A2C4B1BE500AD3336 /* ContentView.swift */,
-				F5DF277E2C82710B0037B00F /* File.swift */,
+				F5DF277E2C82710B0037B00F /* MenuView.swift */,
 				3E57145C2C4B1BE600AD3336 /* Assets.xcassets */,
 				3E57145E2C4B1BE600AD3336 /* Preview Content */,
 				3E5714822C4B1D7100AD3336 /* ColorExtentions.swift */,
@@ -263,10 +269,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5C69B442CA886D0005F6DD0 /* DiabetesPredictionTunedSVCModel.mlmodel in Sources */,
 				3E57145B2C4B1BE500AD3336 /* ContentView.swift in Sources */,
-				F5DF277F2C82710B0037B00F /* File.swift in Sources */,
+				F5DF277F2C82710B0037B00F /* MenuView.swift in Sources */,
 				3E5714832C4B1D7100AD3336 /* ColorExtentions.swift in Sources */,
 				3E5714592C4B1BE400AD3336 /* Diabuddy4App.swift in Sources */,
+				F5C69B422CA88314005F6DD0 /* Modifiers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

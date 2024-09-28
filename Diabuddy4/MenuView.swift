@@ -13,19 +13,28 @@ struct MenuView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Image(systemName: "person")
+                Image(systemName: "house.fill")
                     .foregroundColor(.gray)
                     .imageScale(.large)
-                Text("Profile")
+                Text("Home")
                     .foregroundColor(.gray)
                     .font(.headline)
             }
             .padding(.top, 100)
             HStack {
-                Image(systemName: "envelope")
+                Image(systemName: "heart.fill")
                     .foregroundColor(.gray)
                     .imageScale(.large)
-                Text("Messages")
+                Text("AI Predictor")
+                    .foregroundColor(.gray)
+                    .font(.headline)
+            }
+            .padding(.top, 30)
+            HStack {
+                Image(systemName: "book.fill")
+                    .foregroundColor(.gray)
+                    .imageScale(.large)
+                Text("History")
                     .foregroundColor(.gray)
                     .font(.headline)
             }
@@ -39,6 +48,15 @@ struct MenuView: View {
                     .font(.headline)
             }
             .padding(.top, 30)
+            HStack {
+                Image(systemName: "arrow.left.circle.fill")
+                    .foregroundColor(.gray)
+                    .imageScale(.large)
+                Text("Log Out")
+                    .foregroundColor(.gray)
+                    .font(.headline)
+            }
+            .padding(.top, 320)
             Spacer()
         }
             .padding()
