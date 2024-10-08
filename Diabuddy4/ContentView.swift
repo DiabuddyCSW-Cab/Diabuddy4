@@ -103,7 +103,7 @@ struct RegisterView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 250, height: 191)
                 
-                Text("Register")
+                Text("Rohan's Smelly")
                     .font(.largeTitle)
                     .bold()
                     .padding()
