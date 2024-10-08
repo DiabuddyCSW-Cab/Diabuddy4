@@ -1,3 +1,4 @@
+import CoreML
 import SwiftUI
 
 // Hex Color Extension
@@ -46,7 +47,7 @@ extension View {
 }
 
 // HomeView with Navigation Links for Login and Register
-struct HomeView: View {
+struct InitialView: View {
     var body: some View {
         NavigationView {
             VStack {
@@ -153,8 +154,7 @@ struct RegisterView: View {
                 Spacer()
                 
                 // Navigate to LoggedInView after successful registration
-                NavigationLink(destination: LoggedInView(), isActive: $isLoggedIn) {
-                    EmptyView()
+                NavigationLink(destination: HomeView(), isActive: $isLoggedIn) {
                 }
             }
             .padding()
@@ -240,8 +240,7 @@ struct LoginView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: LoggedInView(), isActive: $isLoggedIn) {
-                    EmptyView()
+                NavigationLink(destination: HomeView(), isActive: $isLoggedIn) {
                 }
             }
             .padding()
@@ -260,81 +259,6 @@ struct LoginView: View {
     }
 }
 
-// LoggedInView with Hamburger Menu
-struct LoggedInView: View {
-    @State private var showMenu = false
-    
-    let drag = DragGesture()
-        .onEnded {
-            if $0.translation.width < -100 {
-                withAnimation {
-                }
-            }
-        }
-    
-    var body: some View {
-        NavigationView {
-            GeometryReader { geometry in
-                ZStack(alignment: .leading) {
-                    MainView(showMenu: $showMenu)
-                        .frame(width: geometry.size.width, height: geometry.size.height)
-                        .offset(x: showMenu ? geometry.size.width / 2 : 0)
-                        .disabled(showMenu)
-                    
-                    if showMenu {
-                        MenuView()
-                            .frame(width: geometry.size.width / 2)
-                            .transition(.move(edge: .leading))
-                            .zIndex(1)
-                            .onTapGesture {
-                                withAnimation {
-                                    showMenu = false
-                                }
-                            }
-                    }
-                }
-                .gesture(drag)
-            }
-            .navigationBarItems(leading: Button(action: {
-                withAnimation {
-                    showMenu.toggle()
-                }
-            }) {
-                Image(systemName: "line.horizontal.3") // Hamburger icon
-                    .foregroundColor(.blue)
-            })
-            .edgesIgnoringSafeArea(.all)
-        }
-        .navigationBarBackButtonHidden(true)
-    }
-}
-
-// MainView for Hamburger Menu
-struct MainView: View {
-    @Binding var showMenu: Bool
-    
-    var body: some View {
-        VStack {
-            // Logo at the top
-            Image("db")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 250, height: 191)
-                .padding(.top, 40) // Add some top padding if needed
-            
-            Spacer() // This will push the content down
-            
-            // Centered homepage content
-            Text("homepage content")
-                .font(.largeTitle)
-                .foregroundColor(.black)
-                .padding() // Adding some padding for better spacing
-            
-            Spacer() // Optional: Pushes the content further down
-        }
-        .navigationBarBackButtonHidden(true) // Hides the back button
-    }
-}
 
 
 
@@ -342,7 +266,7 @@ struct MainView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        InitialView()
     }
 }
 

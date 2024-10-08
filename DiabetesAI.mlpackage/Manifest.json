@@ -1,0 +1,24 @@
+{
+    "fileFormatVersion": "1.0.0",
+    "itemInfoEntries": {
+        "231EAE2D-32DE-4484-8BAA-DF6886DEC38E": {
+            "author": "com.apple.CoreML",
+            "description": "CoreML Model Specification",
+            "name": "DiabetesPredictionTunedSVCModel.mlmodel",
+            "path": "com.apple.CoreML/DiabetesPredictionTunedSVCModel.mlmodel"
+        },
+        "4B81E080-D689-4861-8251-2B4319CD19EB": {
+            "author": "com.apple.CoreML",
+            "description": "External FeatureDescription Overlay",
+            "name": "FeatureDescriptions.json",
+            "path": "com.apple.CoreML/FeatureDescriptions.json"
+        },
+        "8E84D741-D832-4FD3-A0F2-454DD4AE50B2": {
+            "author": "com.apple.CoreML",
+            "description": "External Metadata Overlay",
+            "name": "Metadata.json",
+            "path": "com.apple.CoreML/Metadata.json"
+        }
+    },
+    "rootModelIdentifier": "231EAE2D-32DE-4484-8BAA-DF6886DEC38E"
+}
