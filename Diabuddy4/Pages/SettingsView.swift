@@ -9,6 +9,13 @@ import SwiftUI
 
 struct SettingsView: View {
     @State private var showMenu = false
+    @State private var targetBMI: Double = 20
+    @State private var dailyCaloricIntake: Int = 500
+    @State private var bloodPressure: Double = 50
+    @State private var notificationsEnabled: Bool = true
+    @State private var darkModeEnabled: Bool = true
+
+        
     
     var body: some View {
         NavigationView {
@@ -21,12 +28,52 @@ struct SettingsView: View {
                             .frame(width: 250, height: 191)
                             .padding(.top, -40)
 
-                        Spacer()
-
-                        Text("Settings Page")
+                        Text("Goals")
                             .font(.largeTitle)
                             .foregroundColor(.black)
                             .padding()
+                        Spacer()
+
+                        Form {
+                                        // Target Blood Sugar Section
+                                        Section(header: Text("Target BMI")) {
+                                            VStack(alignment: .leading) {
+                                                Text("Target BMI")
+                                                Slider(value: $targetBMI, in: 0...50, step: 1) {
+                                                    Text("Blood Sugar")
+                                                }
+                                                Text("Current: \(Int(targetBMI)) ")
+                                            }
+                                        }
+                                        
+                                        // Daily Carb Intake Section
+                                        Section(header: Text("Daily Caloric Intake")) {
+                                            VStack(alignment: .leading) {
+                                                Stepper(value: $dailyCaloricIntake, in: 500...10000, step: 100) {
+                                                    Text("Daily Calories: \(dailyCaloricIntake) ")
+                                                }
+                                            }
+                                        }
+                                        
+                                        // Insulin Sensitivity Section
+                                        Section(header: Text("Blood Pressure")) {
+                                            VStack(alignment: .leading) {
+                                                Text("Blood Pressure (mm/Hg)")
+                                                Slider(value: $bloodPressure, in: 20...150, step: 1) {
+                                                    Text("Insulin Sensitivity")
+                                                }
+                                                Text("Current: \(Int(bloodPressure)) mm/Hg")
+                                            }
+                                        }
+                                        
+                                        // Notifications Section
+                                        Section(header: Text("Notifications")) {
+                                            Toggle(isOn: $notificationsEnabled) {
+                                                Text("Enable Notifications")
+                                            }
+                                        }
+                            
+                                    }
 
                         Spacer()
                     }
