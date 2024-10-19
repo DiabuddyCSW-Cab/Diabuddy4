@@ -14,8 +14,7 @@ struct AIPredictorView: View {
     
     @State private var result: String = ""
     
-    // Replace 'DiabetesAI' with the actual model class name
-    let model = DiabetesAI() // Your CoreML model class name
+    let model = DiabetesAI()
     
     var body: some View {
         NavigationView {
@@ -27,7 +26,7 @@ struct AIPredictorView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 250, height: 191)
-                            .padding(.top, 40)
+                            .padding(.top, -40)
                         
                         Spacer()
                         

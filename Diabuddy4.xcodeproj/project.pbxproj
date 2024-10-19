@@ -15,6 +15,7 @@
 		3E5714742C4B1BE700AD3336 /* Diabuddy4UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5714732C4B1BE700AD3336 /* Diabuddy4UITests.swift */; };
 		3E5714762C4B1BE700AD3336 /* Diabuddy4UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5714752C4B1BE700AD3336 /* Diabuddy4UITestsLaunchTests.swift */; };
 		3E5714832C4B1D7100AD3336 /* ColorExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5714822C4B1D7100AD3336 /* ColorExtentions.swift */; };
+		F590E7AB2CB9D2770085C525 /* ScrollHomeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F590E7AA2CB9D2770085C525 /* ScrollHomeView.storyboard */; };
 		F5C69B422CA88314005F6DD0 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C69B412CA88314005F6DD0 /* Modifiers.swift */; };
 		F5C69B4E2CB222EA005F6DD0 /* DiabetesAI.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = F5C69B4D2CB222EA005F6DD0 /* DiabetesAI.mlpackage */; };
 		F5C69B562CB225E7005F6DD0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C69B552CB225E7005F6DD0 /* HomeView.swift */; };
@@ -53,6 +54,7 @@
 		3E5714732C4B1BE700AD3336 /* Diabuddy4UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diabuddy4UITests.swift; sourceTree = "<group>"; };
 		3E5714752C4B1BE700AD3336 /* Diabuddy4UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diabuddy4UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3E5714822C4B1D7100AD3336 /* ColorExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtentions.swift; sourceTree = "<group>"; };
+		F590E7AA2CB9D2770085C525 /* ScrollHomeView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScrollHomeView.storyboard; sourceTree = "<group>"; };
 		F5C69B412CA88314005F6DD0 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		F5C69B4D2CB222EA005F6DD0 /* DiabetesAI.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = DiabetesAI.mlpackage; sourceTree = SOURCE_ROOT; };
 		F5C69B552CB225E7005F6DD0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		F5C69B572CB2262C005F6DD0 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				F590E7AA2CB9D2770085C525 /* ScrollHomeView.storyboard */,
 				F5C69B552CB225E7005F6DD0 /* HomeView.swift */,
 				F5C69B582CB226B9005F6DD0 /* AIPredictorView.swift */,
 				F5C69B5A2CB226C5005F6DD0 /* HistoryView.swift */,
@@ -264,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E5714602C4B1BE600AD3336 /* Preview Assets.xcassets in Resources */,
+				F590E7AB2CB9D2770085C525 /* ScrollHomeView.storyboard in Resources */,
 				3E57145D2C4B1BE600AD3336 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

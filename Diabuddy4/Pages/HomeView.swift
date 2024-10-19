@@ -14,17 +14,37 @@ struct HomeView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 250, height: 191)
-                            .padding(.top, 40) // Add some top padding if needed
+                            .padding(.top, -40) // Add some top padding if needed
 
-                        Spacer() // This will push the content down
 
                         // Centered content
-                        Text("Home page")
+                        Text("Stay Ahead of Diabetes")
+                            .font(.largeTitle)
+                            .foregroundColor(.black)
+                            .padding()
+                        
+                        NavigationLink(destination: AIPredictorView()) {
+                            Text("Go Now")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding()
+                                .background(Color.green)
+                                .cornerRadius(8)
+                        }
+                        .padding()
+                        
+                        Text("About Us")
+                            .font(.largeTitle)
+                            .foregroundColor(.black)
+                            .padding()
+                        
+                        Text("At DiaBuddy, we’re dedicated to helping you take control of your health by predicting your risk of diabetes. Our app provides personalized insights, making it easy to stay informed and take preventive action. Join us in building a healthier future.")
                             .font(.largeTitle)
                             .foregroundColor(.black)
                             .padding()
 
                         Spacer()
+                        
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .offset(x: showMenu ? geometry.size.width / 2 : 0)

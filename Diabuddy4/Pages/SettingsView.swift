@@ -19,7 +19,7 @@ struct SettingsView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 250, height: 191)
-                            .padding(.top, 40)
+                            .padding(.top, -40)
 
                         Spacer()
 
