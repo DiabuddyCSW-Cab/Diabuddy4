@@ -1,10 +1,3 @@
-//
-//  SettingsView.swift
-//  Diabuddy4
-//
-//  Created by Roberto on 10/5/24.
-//
-
 import SwiftUI
 
 struct SettingsView: View {
@@ -15,12 +8,20 @@ struct SettingsView: View {
     @State private var notificationsEnabled: Bool = true
     @State private var darkModeEnabled: Bool = true
 
-        
-    
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
+                    LinearGradient(
+                        gradient: Gradient(colors: [
+                            Color(hexColor: "#A7DFFF"),
+                            Color(hexColor: "#0B75B4")
+                        ]),
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                    .edgesIgnoringSafeArea(.all)
+
                     VStack {
                         Image("db")
                             .resizable()
@@ -30,57 +31,57 @@ struct SettingsView: View {
 
                         Text("Goals")
                             .font(.largeTitle)
+                            .fontWeight(.bold)
                             .foregroundColor(.black)
-                            .padding()
+                            .padding(.bottom, 20)
+
                         Spacer()
 
-                        Form {
-                                        // Target Blood Sugar Section
-                                        Section(header: Text("Target BMI")) {
-                                            VStack(alignment: .leading) {
-                                                Text("Target BMI")
-                                                Slider(value: $targetBMI, in: 0...50, step: 1) {
-                                                    Text("Blood Sugar")
-                                                }
-                                                Text("Current: \(Int(targetBMI)) ")
-                                            }
-                                        }
-                                        
-                                        // Daily Carb Intake Section
-                                        Section(header: Text("Daily Caloric Intake")) {
-                                            VStack(alignment: .leading) {
-                                                Stepper(value: $dailyCaloricIntake, in: 500...10000, step: 100) {
-                                                    Text("Daily Calories: \(dailyCaloricIntake) ")
-                                                }
-                                            }
-                                        }
-                                        
-                                        // Insulin Sensitivity Section
-                                        Section(header: Text("Blood Pressure")) {
-                                            VStack(alignment: .leading) {
-                                                Text("Blood Pressure (mm/Hg)")
-                                                Slider(value: $bloodPressure, in: 20...150, step: 1) {
-                                                    Text("Insulin Sensitivity")
-                                                }
-                                                Text("Current: \(Int(bloodPressure)) mm/Hg")
-                                            }
-                                        }
-                                        
-                                        // Notifications Section
-                                        Section(header: Text("Notifications")) {
-                                            Toggle(isOn: $notificationsEnabled) {
-                                                Text("Enable Notifications")
-                                            }
-                                        }
-                            
-                                    }
+                        sectionView(title: "Target BMI", titleFont: .title2) {
+                            VStack(alignment: .leading) {
+                                Slider(value: $targetBMI, in: 0...50, step: 1) {
+                                    Text("Target BMI")
+                                }
+                                Text("Current: \(Int(targetBMI))")
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                        .padding(.bottom, 20)
+
+                        sectionView(title: "Daily Caloric Intake", titleFont: .title2) {
+                            Stepper(value: $dailyCaloricIntake, in: 500...10000, step: 100) {
+                                Text("Daily Calories: \(dailyCaloricIntake)")
+                            }
+                        }
+                        .padding(.bottom, 20)
+
+                        sectionView(title: "Blood Pressure", titleFont: .title2) {
+                            VStack(alignment: .leading) {
+                                Slider(value: $bloodPressure, in: 20...150, step: 1) {
+                                    Text("Blood Pressure (mm/Hg)")
+                                }
+                                Text("Current: \(Int(bloodPressure)) mm/Hg")
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                        .padding(.bottom, 20)
+
+                        sectionView(title: "Notifications", titleFont: .title2) {
+                            Toggle(isOn: $notificationsEnabled) {
+                                Text("Enable Notifications")
+                                    .font(.body)
+                            }
+                        }
+                        .padding(.bottom, 20)
 
                         Spacer()
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .offset(x: showMenu ? geometry.size.width / 2 : 0)
                     .disabled(showMenu)
-                    
+
                     if showMenu {
                         MenuView()
                             .frame(width: geometry.size.width / 2)
@@ -101,8 +102,26 @@ struct SettingsView: View {
         .navigationBarBackButtonHidden(true)
         .navigationViewStyle(StackNavigationViewStyle())
     }
+
+    private func sectionView<Content: View>(title: String, titleFont: Font = .headline, @ViewBuilder content: () -> Content) -> some View {
+        VStack(spacing: 10) {
+            Text(title)
+                .font(titleFont)
+                .padding(.bottom, 5)
+
+            content()
+                .padding()
+                .background(Color.white.opacity(0.8))
+                .cornerRadius(10)
+                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
+        }
+        .frame(width: 375) 
+        .padding(.horizontal)
+    }
+
 }
 
 #Preview {
     SettingsView()
 }
+

@@ -20,8 +20,16 @@ struct AIPredictorView: View {
         NavigationView {
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
+                    LinearGradient(
+                        gradient: Gradient(colors: [
+                            Color(hexColor: "#A7DFFF"),
+                            Color(hexColor: "#0B75B4")
+                        ]),
+                                   startPoint: .top,
+                                   endPoint: .bottom)
+                        .edgesIgnoringSafeArea(.all)
+                    
                     VStack {
-                        // Logo at the top
                         Image("db")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -30,59 +38,72 @@ struct AIPredictorView: View {
                         
                         Spacer()
                         
-                        // Centered content
-                        Text("AI Predictor Page")
-                            .font(.largeTitle)
-                            .foregroundColor(.black)
-                            .padding()
+                        Text("AI Predictor")
+                            .font(.system(size: 34, weight: .bold, design: .rounded))
+                            .foregroundColor(.primary)
+                            .multilineTextAlignment(.center)
+                            .padding(.bottom, 10)
                         
-                        // Input fields for each input
                         VStack(spacing: 10) {
                             TextField("Glucose", text: $glucose)
                                 .keyboardType(.decimalPad)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.horizontal, 20)
                             TextField("Blood Pressure", text: $bloodPressure)
                                 .keyboardType(.decimalPad)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.horizontal, 20)
                             TextField("Skin Thickness (optional)", text: $skinThickness)
                                 .keyboardType(.decimalPad)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.horizontal, 20)
                             TextField("Insulin (optional)", text: $insulin)
                                 .keyboardType(.decimalPad)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.horizontal, 20)
                             TextField("BMI", text: $bmi)
                                 .keyboardType(.decimalPad)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.horizontal, 20)
                             TextField("Age", text: $age)
                                 .keyboardType(.decimalPad)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.horizontal, 20)
                             TextField("Diabetes Pedigree Function (optional)", text: $diabetesPedigreeFunction)
                                 .keyboardType(.decimalPad)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.horizontal, 20)
                             TextField("Pregnancies", text: $pregnancies)
                                 .keyboardType(.decimalPad)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.horizontal, 20)
                         }
                         .padding()
                         
-                        // Prediction button
                         Button(action: predict) {
                             Text("Predict")
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .padding()
                                 .frame(maxWidth: .infinity)
-                                .background(Color.blue)
+                                .background(Color.red)
                                 .cornerRadius(10)
                         }
                         .padding()
                         
-                        // Display prediction result
                         Text("Result: \(result)")
                             .font(.headline)
                             .padding()
                         
                         Spacer()
+                        Text("0 - Not in risk of diabetes ")
+                            .font(.system(size: 18, design: .rounded))
+                            .foregroundColor(.primary)
+                            .padding(.horizontal, 8)
+                        Text("1 - In risk of diabetes ")
+                            .font(.system(size: 18, design: .rounded))
+                            .foregroundColor(.primary)
+                            .padding(.horizontal, 8)
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .offset(x: showMenu ? geometry.size.width / 2 : 0)
@@ -101,7 +122,7 @@ struct AIPredictorView: View {
                     showMenu.toggle()
                 }
             }) {
-                Image(systemName: "line.horizontal.3") // Hamburger icon
+                Image(systemName: "line.horizontal.3")
                     .foregroundColor(.blue)
             })
         }
@@ -109,9 +130,7 @@ struct AIPredictorView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
-    // Prediction function
     func predict() {
-        // Create an instance of the input struct
         let input = DiabetesAIInput(
             Glucose: Double(glucose) ?? 0.0,
             BloodPressure: Double(bloodPressure) ?? 0.0,
@@ -123,17 +142,13 @@ struct AIPredictorView: View {
             Pregnancies: Double(pregnancies) ?? 0.0
         )
         
-        // Make prediction using the model
         do {
             let prediction = try model.prediction(input: input)
-            
-            // Access the correct output property
-            result = "\(prediction.classLabel)" // Adjust based on the actual property name
+            result = "\(prediction.classLabel)"
         } catch {
             result = "Error in prediction: \(error.localizedDescription)"
         }
     }
-    
 }
 
 #Preview {

@@ -27,12 +27,12 @@ struct MenuView: View {
             }
             .padding(.top, 30)
             
-            NavigationLink(destination: HistoryView()) {
+            NavigationLink(destination: ContextView()) {
                 HStack {
-                    Image(systemName: "book.fill")
+                    Image(systemName: "magnifyingglass")
                         .foregroundColor(.gray)
                         .imageScale(.large)
-                    Text("History")
+                    Text("Context")
                         .foregroundColor(.gray)
                         .font(.headline)
                 }
@@ -50,14 +50,15 @@ struct MenuView: View {
                 }
             }
             .padding(.top, 30)
-            
-            HStack {
-                Image(systemName: "arrow.left.circle.fill")
-                    .foregroundColor(.gray)
-                    .imageScale(.large)
-                Text("Log Out")
-                    .foregroundColor(.gray)
-                    .font(.headline)
+            NavigationLink(destination: InitialView()) {
+                HStack {
+                    Image(systemName: "arrow.left.circle.fill")
+                        .foregroundColor(.gray)
+                        .imageScale(.large)
+                    Text("Log Out")
+                        .foregroundColor(.gray)
+                        .font(.headline)
+                }
             }
             .padding(.top, 320)
             

@@ -1,7 +1,7 @@
 import CoreML
 import SwiftUI
 
-// Hex Color Extension
+// gradient
 extension Color {
     init(hexColor: String) {
         let hex = hexColor.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -19,7 +19,7 @@ extension Color {
     }
 }
 
-// Gradient Background View Modifier
+// background modifier
 struct GradientBackground: ViewModifier {
     let gradient = LinearGradient(
         gradient: Gradient(colors: [
@@ -39,14 +39,13 @@ struct GradientBackground: ViewModifier {
     }
 }
 
-// View Extension to Use Gradient Background
 extension View {
     func gradientBackground() -> some View {
         self.modifier(GradientBackground())
     }
 }
 
-// HomeView with Navigation Links for Login and Register
+// initial view setup
 struct InitialView: View {
     var body: some View {
         NavigationView {
@@ -57,7 +56,6 @@ struct InitialView: View {
                     .frame(width: 250, height: 191)
                     .padding()
                                 
-                // Navigation Link to LoginView
                 NavigationLink(destination: LoginView()) {
                     Text("Login")
                         .font(.headline)
@@ -68,7 +66,6 @@ struct InitialView: View {
                 }
                 .padding(.bottom, 20)
                 
-                // Navigation Link to RegisterView
                 NavigationLink(destination: RegisterView()) {
                     Text("Register")
                         .font(.headline)
@@ -81,13 +78,14 @@ struct InitialView: View {
                 Spacer(minLength: 50)
             }
             .padding()
-            .gradientBackground() // Apply the gradient background
+            .gradientBackground()
             .navigationBarBackButtonHidden(true)
         }
+        .navigationBarBackButtonHidden(true)
+
     }
 }
 
-// Example: RegisterView Implementation
 struct RegisterView: View {
     @State private var username = ""
     @State private var password = ""
@@ -98,12 +96,12 @@ struct RegisterView: View {
     var body: some View {
         ZStack {
             VStack {
-                Image("db") // Same asset as used in HomeView
+                Image("db")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 250, height: 191)
                 
-                Text("Rohan's Smelly")
+                Text("Register")
                     .font(.largeTitle)
                     .bold()
                     .padding()
@@ -126,7 +124,7 @@ struct RegisterView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 
-                // Show errors if any
+                // if error
                 if !wrongUsername.isEmpty {
                     Text(wrongUsername)
                         .foregroundColor(.red)
@@ -139,7 +137,6 @@ struct RegisterView: View {
                         .padding()
                 }
                 
-                // Register Button
                 Button(action: {
                     authenticateUser()
                 }) {
@@ -153,7 +150,6 @@ struct RegisterView: View {
                 
                 Spacer()
                 
-                // Navigate to LoggedInView after successful registration
                 NavigationLink(destination: HomeView(), isActive: $isLoggedIn) {
                 }
             }
@@ -163,18 +159,15 @@ struct RegisterView: View {
         .navigationBarBackButtonHidden(true)
     }
 
-    // Dummy Authentication Logic
     func authenticateUser() {
-        if username == "Test" && password == "password" {
             isLoggedIn = true
-        } else {
+    if username.isEmpty {
             wrongUsername = username.isEmpty ? "Username cannot be empty" : "Incorrect username"
             wrongPassword = password.isEmpty ? "Password cannot be empty" : "Incorrect password"
         }
     }
 }
 
-// LoginView Implementation
 struct LoginView: View {
     @State private var username = ""
     @State private var password = ""
@@ -185,7 +178,7 @@ struct LoginView: View {
     var body: some View {
         ZStack {
             VStack {
-                Image("db") // Image must be in Assets folder
+                Image("db")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 250, height: 191)
@@ -213,7 +206,6 @@ struct LoginView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 
-                // Display errors
                 if !wrongUsername.isEmpty {
                     Text(wrongUsername)
                         .foregroundColor(.red)
@@ -226,7 +218,6 @@ struct LoginView: View {
                         .padding()
                 }
                 
-                // Login Button
                 Button(action: {
                     authenticateUser()
                 }) {
@@ -250,9 +241,8 @@ struct LoginView: View {
     }
 
     func authenticateUser() {
-        if username == "Test" && password == "password" {
             isLoggedIn = true
-        } else {
+    if username.isEmpty {
             wrongUsername = username.isEmpty ? "Username cannot be empty" : "Incorrect username"
             wrongPassword = password.isEmpty ? "Password cannot be empty" : "Incorrect password"
         }
@@ -262,7 +252,6 @@ struct LoginView: View {
 
 
 
-// MenuView (Ensure this is only declared once)
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
