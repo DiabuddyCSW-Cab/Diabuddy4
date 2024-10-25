@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3E5714592C4B1BE400AD3336 /* Diabuddy4App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5714582C4B1BE400AD3336 /* Diabuddy4App.swift */; };
 		3E57145B2C4B1BE500AD3336 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E57145A2C4B1BE500AD3336 /* ContentView.swift */; };
 		3E57145D2C4B1BE600AD3336 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E57145C2C4B1BE600AD3336 /* Assets.xcassets */; };
 		3E5714602C4B1BE600AD3336 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E57145F2C4B1BE600AD3336 /* Preview Assets.xcassets */; };
@@ -43,7 +42,6 @@
 
 /* Begin PBXFileReference section */
 		3E5714552C4B1BE400AD3336 /* Diabuddy4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diabuddy4.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E5714582C4B1BE400AD3336 /* Diabuddy4App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diabuddy4App.swift; sourceTree = "<group>"; };
 		3E57145A2C4B1BE500AD3336 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3E57145C2C4B1BE600AD3336 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E57145F2C4B1BE600AD3336 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -112,7 +110,6 @@
 			children = (
 				F5C69B4D2CB222EA005F6DD0 /* DiabetesAI.mlpackage */,
 				F5C69B412CA88314005F6DD0 /* Modifiers.swift */,
-				3E5714582C4B1BE400AD3336 /* Diabuddy4App.swift */,
 				3E57145A2C4B1BE500AD3336 /* ContentView.swift */,
 				F5DF277E2C82710B0037B00F /* MenuView.swift */,
 				F5C69B572CB2262C005F6DD0 /* Pages */,
@@ -296,7 +293,6 @@
 				F5DF277F2C82710B0037B00F /* MenuView.swift in Sources */,
 				F5C69B5D2CB226D0005F6DD0 /* SettingsView.swift in Sources */,
 				3E5714832C4B1D7100AD3336 /* ColorExtentions.swift in Sources */,
-				3E5714592C4B1BE400AD3336 /* Diabuddy4App.swift in Sources */,
 				F5C69B5B2CB226C5005F6DD0 /* ContextView.swift in Sources */,
 				F5C69B422CA88314005F6DD0 /* Modifiers.swift in Sources */,
 			);
@@ -468,6 +464,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -497,6 +494,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

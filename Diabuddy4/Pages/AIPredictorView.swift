@@ -154,4 +154,3 @@ struct AIPredictorView: View {
 #Preview {
     AIPredictorView()
 }
-

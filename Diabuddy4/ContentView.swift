@@ -1,7 +1,6 @@
 import CoreML
 import SwiftUI
 
-// gradient
 extension Color {
     init(hexColor: String) {
         let hex = hexColor.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -19,7 +18,6 @@ extension Color {
     }
 }
 
-// background modifier
 struct GradientBackground: ViewModifier {
     let gradient = LinearGradient(
         gradient: Gradient(colors: [
@@ -45,7 +43,6 @@ extension View {
     }
 }
 
-// initial view setup
 struct InitialView: View {
     var body: some View {
         NavigationView {
@@ -82,10 +79,8 @@ struct InitialView: View {
             .navigationBarBackButtonHidden(true)
         }
         .navigationBarBackButtonHidden(true)
-
     }
 }
-
 struct RegisterView: View {
     @State private var username = ""
     @State private var password = ""
@@ -124,7 +119,6 @@ struct RegisterView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 
-                // if error
                 if !wrongUsername.isEmpty {
                     Text(wrongUsername)
                         .foregroundColor(.red)
@@ -160,8 +154,8 @@ struct RegisterView: View {
     }
 
     func authenticateUser() {
-            isLoggedIn = true
-    if username.isEmpty {
+        isLoggedIn = true
+        if username.isEmpty {
             wrongUsername = username.isEmpty ? "Username cannot be empty" : "Incorrect username"
             wrongPassword = password.isEmpty ? "Password cannot be empty" : "Incorrect password"
         }
@@ -241,17 +235,22 @@ struct LoginView: View {
     }
 
     func authenticateUser() {
-            isLoggedIn = true
-    if username.isEmpty {
+        isLoggedIn = true
+        if username.isEmpty {
             wrongUsername = username.isEmpty ? "Username cannot be empty" : "Incorrect username"
             wrongPassword = password.isEmpty ? "Password cannot be empty" : "Incorrect password"
         }
     }
 }
 
-
-
-
+@main
+struct YourApp: App {
+    var body: some Scene {
+        WindowGroup {
+            InitialView()
+        }
+    }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
